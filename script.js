@@ -1,18 +1,24 @@
-// Already declared array of promises
-const promises = [
-  // Add your promises here
-  new Promise(resolve => setTimeout(() => resolve("Promise 1 resolved"), Math.floor(Math.random() * 5000) + 1000)),
-  new Promise(resolve => setTimeout(() => resolve("Promise 2 resolved"), Math.floor(Math.random() * 5000) + 1000)),
-  new Promise(resolve => setTimeout(() => resolve("Promise 3 resolved"), Math.floor(Math.random() * 5000) + 1000)),
-  new Promise(resolve => setTimeout(() => resolve("Promise 4 resolved"), Math.floor(Math.random() * 5000) + 1000)),
-  new Promise(resolve => setTimeout(() => resolve("Promise 5 resolved"), Math.floor(Math.random() * 5000) + 1000))
-];
+// script.js
+const promises = Array.from({ length: 5 }, () => getRandomPromise());
 
-// Wait for the first promise to resolve using Promise.any
+function getRandomTime() {
+    return Math.floor(Math.random() * 5000) + 1000; // Random time between 1 and 5 seconds in milliseconds
+}
+
+function getRandomPromise() {
+    const randomTime = getRandomTime();
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(`Resolved in ${randomTime} milliseconds`);
+        }, randomTime);
+    });
+}
+
 Promise.any(promises)
-  .then(result => {
-    // Print the result to the div with id "output"
-    const outputDiv = document.getElementById('output');
-    outputDiv.textContent = result;
-  })
-  .catch(error => console.error(error));
+    .then((result) => {
+        const outputDiv = document.getElementById("output");
+        outputDiv.innerText = result;
+    })
+    .catch((error) => {
+        console.error("All promises failed:", error);
+    });
