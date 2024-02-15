@@ -1,5 +1,5 @@
 // script.js
-const promises = Array.from({ length: 5 }, () => getRandomPromise());
+const promises = Array.from({ length: 5 }, (_, index) => getRandomPromise());
 
 function getRandomTime() {
     return Math.floor(Math.random() * 5000) + 1000; // Random time between 1 and 5 seconds in milliseconds
