@@ -5,7 +5,7 @@ function getRandomPromise() {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(`Promise resolved after ${delay} milliseconds`);
-    }, delay);
+    }, delay * 1000);
   });
 }
 
