@@ -1,19 +1,35 @@
-// const promises = Array.from({ length: 5 }, getRandomPromise);
+const promises = [
+  new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Promise 1 resolved");
+    }, Math.random() * 4000 + 1000);
+  }),
+  new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Promise 2 resolved");
+    }, Math.random() * 4000 + 1000);
+  }),
+  new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Promise 3 resolved");
+    }, Math.random() * 4000 + 1000);
+  }),
+  new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Promise 4 resolved");
+    }, Math.random() * 4000 + 1000);
+  }),
+  new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Promise 5 resolved");
+    }, Math.random() * 4000 + 1000);
+  }),
+];
 
-// function getRandomPromise() {
-//   const delay = Math.floor(Math.random() * 5000) + 1000; // Random delay between 1 and 5 seconds
-//   return new Promise((resolve) => {
-//     setTimeout(() => {
-//       resolve(`Promise resolved after ${delay} milliseconds`);
-//     }, delay );
-//   });
-// }
-
-// Promise.any(promises)
-//   .then((result) => {
-//     const outputDiv = document.getElementById('output');
-//     outputDiv.innerText = result;
-//   })
-//   .catch((error) => {
-//     console.error(error);
-//   });
+Promise.any(promises)
+  .then((result) => {
+    document.getElementById("output").innerText = result;
+  })
+  .catch((error) => {
+    console.error(error);
+  });
