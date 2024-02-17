@@ -9,10 +9,11 @@ Promise.any(promises)
   });
 
 function getRandomPromise() {
-  const randomTime = Math.floor(Math.random() * 100) + 1;
+  const delay = Math.floor(Math.random() * 100) + 1;
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve(randomTime);
-    }, randomTime * 1000);
+      resolve(delay);
+    }, delay * 1000);
   });
 }
+win.promises;
