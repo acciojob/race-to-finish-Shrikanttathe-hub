@@ -9,7 +9,7 @@ Promise.any(promises)
   });
 
 function getRandomPromise() {
-  const randomTime = Math.floor(Math.random() * 5) + 1;
+  const randomTime = Math.floor(Math.random() * 100) + 1;
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(randomTime);
